@@ -4,14 +4,13 @@ namespace EF6CodeFirstDemo
 {
     public class SchoolContext : DbContext
     {
-        public SchoolContext() : base("SchoolDB-EF6CodeFirst")
+        public SchoolContext() : base("SchoolDB")
         {
-            Database.SetInitializer<SchoolContext>(new SchoolDBInitializer());
+            Database.SetInitializer(new SchoolDBInitializer());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Adds configurations for Student from separate class
             modelBuilder.Configurations.Add(new StudentConfigurations());
 
             modelBuilder.Entity<Teacher>()
